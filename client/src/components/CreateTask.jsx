@@ -5,7 +5,7 @@ import { createTask } from "../api/task";
 import handleError from "../utils/handleError";
 import { useAuth } from "../store";
 import { toast } from "sonner";
-export default function CreateTask({ name, classname }) {
+export default function CreateTask({ name, classname,fetchtask }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { token } = useAuth();
 
@@ -23,6 +23,7 @@ export default function CreateTask({ name, classname }) {
 
         reset();
         setIsModalOpen(false);
+        fetchtask();
       }
       console.log(res);
     } catch (error) {
@@ -37,11 +38,12 @@ export default function CreateTask({ name, classname }) {
       <Modal isOpen={isModalOpen} id="createPostModal" classname="max-w-xl">
         <>
           <button
-            className="tex-2xl mb-3 "
+            className="tex-2xl mb-3 flex"
             type="button"
             onClick={() => setIsModalOpen(false)}
           >
-            <i></i>New Task
+            <i class="ri-arrow-left-s-line text-2xl"></i>{" "}
+            <p className="text-bold text-xl">New Task</p>
           </button>
           <form action="" onSubmit={handleSubmit(formSubmit)}>
             <div>

@@ -5,5 +5,5 @@ const router = express.Router();
 router.post("/create", authMiddleware, createTask);
 router.get("/get", authMiddleware, getTasks);
 router.delete("/delete/:id", authMiddleware, deleteTask);
-router.patch("/task/edit/:id", authMiddleware, editTask);
+router.patch("/edit/:id", authMiddleware, editTask);
 export default router;

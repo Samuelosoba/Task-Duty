@@ -35,7 +35,7 @@ export default function Login() {
   };
   return (
     <div className="">
-      <div className="  border rounded-md border-[#A1A1A1] py-[40px] px-[28px]">
+      <div className="   py-[40px] px-[28px]">
         <form
           className="md:max-w-[400px] mx-auto mt-10"
           onSubmit={handleSubmit(onFormSubmit)}
@@ -85,21 +85,21 @@ export default function Login() {
             </span>
           )}
           <button
-            className="btn btn-secondary btn-lg w-full mt-4 bg-[#8D0D76] mb-4"
+            className="btn btn-secondary btn-lg w-full mt-4 bg-[#974FD0] mb-4"
             type="submit"
           >
-            Sign up
+            Log In
           </button>
         </form>
-      </div>
-      <div className=" md:w-[500px] h-[80px] border rounded-md border-[#A1A1A1] mt-6 flex items-center justify-center py-6">
-        <p className="text-[20px] mr-2">Dont have an account? </p>{" "}
-        <Link
-          to="/auth/register"
-          className="text-[#8D0D76] text-bold text-[20px]"
-        >
-          SignUp
-        </Link>
+        <div className=" md:w-[500px] h-[80px] border rounded-md border-[#A1A1A1] mt-6 flex items-center justify-center py-6 mx-auto">
+          <p className="text-[20px] mr-2">Dont have an account? </p>{" "}
+          <Link
+            to="/auth/register"
+            className="text-[#974FD0] text-bold text-[20px]"
+          >
+            SignUp
+          </Link>
+        </div>
       </div>
     </div>
   );

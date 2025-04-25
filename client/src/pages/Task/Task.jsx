@@ -11,7 +11,7 @@ export default function Task() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [taskToEdit, setTaskToEdit] = useState(null);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const fetchTasks = async () => {
     try {
       const res = await getAllTask(token);
@@ -51,14 +51,11 @@ export default function Task() {
     <div className="px-10 py-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold">My Tasks</h2>
-        {taskToEdit && (
-          <EditTask
-            name="Edit Task"
-            classname="text-purple-600 font-medium hover:underline"
-            taskToEdit={taskToEdit}
-            onClose={() => setTaskToEdit(null)} // Reset when modal is closed
-          />
-        )}
+        <CreateTask
+          fetchtask={fetchTasks}
+          name={"+ Add New Tasks"}
+          classname={"text-[#974FD0]"}
+        />
       </div>
 
       {loading ? (
@@ -68,10 +65,10 @@ export default function Task() {
       ) : (
         tasks.map((task) => (
           <div
-            key={task._id} // assuming _id from MongoDB
+            key={task._id}
             className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 mb-4"
           >
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <span
                 className={`text-sm font-medium ${
                   task.tags === "Urgent" ? "text-red-600" : "text-green-600"
@@ -80,12 +77,15 @@ export default function Task() {
                 {task.tags}
               </span>
               <div className="flex gap-4">
-                <EditTask
-                  classname={
-                    "bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
-                  }
-                  name={"Edit Task"}
-                />
+                <button
+                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                  onClick={() => {
+                    handleEdit(task);
+                    setIsModalOpen(true);
+                  }}
+                >
+                  Edit Task
+                </button>
                 <button
                   className="bg-gray-100 text-purple-600 px-4 py-2 rounded border hover:bg-purple-50"
                   onClick={() => handleDelete(task._id)}
@@ -98,6 +98,18 @@ export default function Task() {
             <p className="text-gray-600 mt-2">{task.description}</p>
           </div>
         ))
+      )}
+
+      {/* Edit Task Modal */}
+      {taskToEdit && (
+        <EditTask
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false);
+            fetchTasks();
+          }}
+          taskToEdit={taskToEdit}
+        />
       )}
     </div>
   );

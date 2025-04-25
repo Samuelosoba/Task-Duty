@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -26,7 +25,7 @@ export default function Register() {
       if (res.status === 200) {
         toast.success(res.data.message);
         setAccessToken(res.data.accessToken);
-        navigate("/");
+        navigate("/auth/login");
       }
     } catch (error) {
       handleError(error);
@@ -34,7 +33,7 @@ export default function Register() {
   };
   return (
     <div className="">
-      <div className="  border rounded-md border-[#A1A1A1] py-[40px] px-[28px]">
+      <div className="    py-[40px] px-[28px]">
         <form
           className="md:max-w-[400px] mx-auto mt-10"
           onSubmit={handleSubmit(onFormSubmit)}
@@ -102,18 +101,21 @@ export default function Register() {
             </span>
           )}
           <button
-            className="btn btn-secondary btn-lg w-full mt-4 bg-[#8D0D76] mb-4"
+            className="btn btn-secondary btn-lg w-full mt-4 bg-[#974FD0] mb-4"
             type="submit"
           >
             Sign up
           </button>
         </form>
-      </div>
-      <div className=" md:w-[500px] h-[80px] border rounded-md border-[#A1A1A1] mt-6 flex items-center justify-center py-6">
-        <p className="text-[20px] mr-2">Already have an account? </p>{" "}
-        <Link to="/auth/login" className="text-[#8D0D76] text-bold text-[20px]">
-          log in
-        </Link>
+        <div className=" md:w-[500px] h-[80px] border rounded-md border-[#A1A1A1] mt-6 flex items-center justify-center py-6 mx-auto">
+          <p className="text-[20px] mr-2">Already have an account? </p>
+          <Link
+            to="/auth/login"
+            className="text-[#974FD0] text-bold text-[20px]"
+          >
+            log in
+          </Link>
+        </div>
       </div>
     </div>
   );
