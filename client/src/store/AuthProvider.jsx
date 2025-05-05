@@ -5,7 +5,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import { toast } from "sonner"; // Optional: add toast for error handling
 
 const AuthProvider = ({ children }) => {
-  const [token, setToken] = useLocalStorage("token", null); // Custom hook to store token in localStorage
+  const [token, setToken] = useLocalStorage("token", null); //
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 

@@ -107,7 +107,7 @@ export default function Register() {
             Sign up
           </button>
         </form>
-        <div className=" md:w-[500px] h-[80px] border rounded-md border-[#A1A1A1] mt-6 flex items-center justify-center py-6 mx-auto">
+        <div className=" md:w-[400px] h-[80px] border rounded-md border-[#A1A1A1] mt-4 flex items-center justify-center py-2 mx-auto">
           <p className="text-[20px] mr-2">Already have an account? </p>
           <Link
             to="/auth/login"

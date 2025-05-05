@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import Animation from "../../assets/Animation.png";
 import { useAuth } from "../../store";
+import { handleRoute } from "../../hooks/handleRoute";
 export default function Home() {
-  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-
+  const { isAuthenticated } = useAuth();
   const handleRoute = () => {
     if (!isAuthenticated) {
       navigate("/auth/login");
@@ -13,10 +13,11 @@ export default function Home() {
       navigate("/task");
     }
   };
+
   return (
-    <>
-      <div className="flex items-center justify-between px-10 py-10  ">
-        <div className="max-w-[400px] lg:max-w-[600px]">
+    <div className="">
+      <div className="grid container grid-cols-12 items-center justify-between px-10 py-10 mx-auto max-w-[1000px] ">
+        <div className="col-span-6 mr-10">
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">
             Manage your Tasks on{" "}
             <span className="text-[#974FD0]">TaskDuty</span>
@@ -34,10 +35,10 @@ export default function Home() {
             See my Task
           </button>
         </div>
-        <div>
-          <img src={Animation} alt="" className="w-full mx-auto" />
+        <div className=" col-span-6">
+          <img src={Animation} alt="" className="ml-10" />
         </div>
       </div>
-    </>
+    </div>
   );
 }

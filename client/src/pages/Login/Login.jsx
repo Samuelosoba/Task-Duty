@@ -35,7 +35,7 @@ export default function Login() {
   };
   return (
     <div className="">
-      <div className="   py-[40px] px-[28px]">
+      <div className="   py-[40px] px-[28px ">
         <form
           className="md:max-w-[400px] mx-auto mt-10"
           onSubmit={handleSubmit(onFormSubmit)}
@@ -91,7 +91,7 @@ export default function Login() {
             Log In
           </button>
         </form>
-        <div className=" md:w-[500px] h-[80px] border rounded-md border-[#A1A1A1] mt-6 flex items-center justify-center py-6 mx-auto">
+        <div className=" md:w-[400px] h-[80px] border rounded-md border-[#A1A1A1] mt-4 flex items-center justify-center py-2 mx-auto">
           <p className="text-[20px] mr-2">Dont have an account? </p>{" "}
           <Link
             to="/auth/register"

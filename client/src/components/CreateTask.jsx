@@ -5,7 +5,7 @@ import { createTask } from "../api/task";
 import handleError from "../utils/handleError";
 import { useAuth } from "../store";
 import { toast } from "sonner";
-export default function CreateTask({ name, classname,fetchtask }) {
+export default function CreateTask({ name, classname,fetchtask,onclick }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { token } = useAuth();
 
@@ -33,7 +33,7 @@ export default function CreateTask({ name, classname,fetchtask }) {
   return (
     <>
       <div className="" onClick={() => setIsModalOpen(true)}>
-        <div className={classname}>{name}</div>
+        <div className={classname} onClick={onclick}>{name}</div>
       </div>
       <Modal isOpen={isModalOpen} id="createPostModal" classname="max-w-xl">
         <>
@@ -83,10 +83,10 @@ export default function CreateTask({ name, classname,fetchtask }) {
                   list="browsers"
                   {...register("tags", { required: true })}
                 />
-                <datalist id="browsers">
+                <select id="browsers">
                   <option value="Urgent"></option>
                   <option value="Important"></option>
-                </datalist>
+                </select>
               </label>
             </div>
 

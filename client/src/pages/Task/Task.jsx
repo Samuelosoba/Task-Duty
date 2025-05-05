@@ -48,7 +48,7 @@ export default function Task() {
     setTaskToEdit(task); // Set task for editing
   };
   return (
-    <div className="px-10 py-10">
+    <div className="px-10 py-10  mx-auto max-w-[1000px]">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold">My Tasks</h2>
         <CreateTask
@@ -66,19 +66,19 @@ export default function Task() {
         tasks.map((task) => (
           <div
             key={task._id}
-            className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 mb-4"
+            className="bg-white shadow-sm border border-gray-200 rounded-lg mb-4 "
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center py-2 border-gray-300 border-b px-4">
               <span
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium  mt-4 mb-2 ${
                   task.tags === "Urgent" ? "text-red-600" : "text-green-600"
                 }`}
               >
                 {task.tags}
               </span>
-              <div className="flex gap-4">
+              <div className="flex gap-4 ">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-white hover:text-purple-600"
                   onClick={() => {
                     handleEdit(task);
                     setIsModalOpen(true);
@@ -94,8 +94,10 @@ export default function Task() {
                 </button>
               </div>
             </div>
-            <h3 className="text-xl font-semibold mt-2">{task.title}</h3>
-            <p className="text-gray-600 mt-2">{task.description}</p>
+            <div className="px-4">
+              <h3 className="font-semibold mt-2">{task.title}</h3>
+              <p className="text-gray-600 mt-2">{task.description}</p>
+            </div>
           </div>
         ))
       )}
