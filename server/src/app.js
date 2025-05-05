@@ -6,7 +6,7 @@ import cors from "cors";
 import createHttpError, { isHttpError } from "http-errors";
 const app = express();
 const corsOptions = {
-  origin: ["http://localhost:4700"],
+  origin: ["http://localhost:4700", "https://task-duty-client.vercel.app"],
   optionsSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
