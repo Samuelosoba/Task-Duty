@@ -17,12 +17,11 @@ app.use(morgan("dev"));
 app.use(json({ limit: "25mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.disable("x-powered-by");
+app.get("/", (req, res) => {
+  res.send("Hello task server");
+});
 app.use("/api/auth", userRoute);
 app.use("/api/task", taskRoute);
-
-app.use((req, res, next) => {
-  return next(createHttpError(404, `Route ${req.originalUrl} not found`));
-});
 
 app.use((error, req, res, next) => {
   console.error(error);
