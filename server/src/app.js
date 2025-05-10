@@ -21,7 +21,7 @@ app.use("/api/auth", userRoute);
 app.use("/api/task", taskRoute);
 
 app.use((req, res, next) => {
-  return next(createHttpError(404, `Route not found`));
+  return next(createHttpError(404, `Route ${req.originalUrl} not found`));
 });
 
 app.use((error, req, res, next) => {
