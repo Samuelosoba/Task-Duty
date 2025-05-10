@@ -7,10 +7,7 @@ import createHttpError, { isHttpError } from "http-errors";
 import serverless from "serverless-http";
 const app = express();
 const corsOptions = {
-  origin: [
-    "http://localhost:4700",
-    "https://https://task-duty-client.vercel.app/",
-  ],
+  origin: ["http://localhost:4700", "https://task-duty-client.vercel.app/"],
   optionsSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
