@@ -35,7 +35,7 @@ export default function Register() {
     <div className="">
       <div className="    py-[40px] px-[28px]">
         <form
-          className="md:max-w-[400px] mx-auto mt-10"
+          className="max-w-[300px] md:max-w-[400px]  mx-auto mt-10"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <div className="mb-4">
@@ -107,7 +107,7 @@ export default function Register() {
             Sign up
           </button>
         </form>
-        <div className=" md:w-[400px] h-[80px] border rounded-md border-[#A1A1A1] mt-4 flex items-center justify-center py-2 mx-auto">
+        <div className=" max-w-[300px] md:max-w-[400px]  h-[80px] border rounded-md border-[#A1A1A1] mt-4 flex items-center justify-center py-2 mx-auto">
           <p className="text-[20px] mr-2">Already have an account? </p>
           <Link
             to="/auth/login"

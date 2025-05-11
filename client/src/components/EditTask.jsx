@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Model";
 import { useForm } from "react-hook-form";
 import { editTask } from "../api/task";
@@ -47,7 +47,13 @@ export default function EditTask({ isOpen, onClose, taskToEdit }) {
   return (
     <Modal isOpen={isOpen} id="editPostModal" classname="max-w-xl">
       <form onSubmit={handleSubmit(formSubmit)}>
-        <h3 className="text-xl font-semibold mb-4">Edit Task</h3>
+        <h3
+          className="text-xl font-semibold mb-4"
+          role="button"
+          onClick={() => onClose()}
+        >
+          Edit Task
+        </h3>
 
         <label className="floating-label">
           <span>Title</span>

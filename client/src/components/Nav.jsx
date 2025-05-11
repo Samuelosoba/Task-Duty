@@ -24,35 +24,40 @@ export default function Nav() {
     <div className="border-b border-gray-300">
       <div className="flex container justify-between items-center mx-auto px-10 py-4 max-w-[1000px] ">
         <div
-          className="flex gap-2 w-[157px] h-[31px] "
+          className="flex gap-2 md:w-[157px] md:h-[31px] "
           onClick={() => navigate("/")}
         >
           <img src={Logo} alt="" className="" />
-          <img src={TaskDuty} alt="" className="h-[20px] mt-2" />
+          <img
+            src={TaskDuty}
+            alt=""
+            className="h-[20px] mt-2 md:block hidden"
+          />
         </div>
         <div className="flex gap-4 ">
           <CreateTask
             name={"New Task"}
-            classname={"text-gray-800 font-bol cursor-pointer mt-2"}
+            classname={"text-gray-800  cursor-pointer mt-1"}
             onclick={handleRoute}
           />
-          <button onClick={handleRoute}>
-            <NavLink className="text-gray-800 font-bol cursor-pointer mt-2 " to="/task">
-              All task
-            </NavLink>
-          </button>
 
-          <div className="avatar">
-            <div className="w-10 h-10 rounded-full bg-black flex justify-center items-center text-white text-xl text-center font-bold">
-              {/* If user is logged in, show the first letter of the username */}
-              {avatarContent ? (
-                avatarContent
+          <p
+            className="text-gray-800  cursor-pointer mt-1 "
+            to="/task"
+            role="button"
+            onClick={handleRoute}
+          >
+            All task
+          </p>
+
+          <div className="avatar avatar-placeholder">
+            <div className="w-8 rounded-full border border-gray-300 ">
+              {!avatarContent ? (
+                <img src={defaultAvatar} alt={defaultAvatar} loading="lazy" />
               ) : (
-                <img
-                  src={defaultAvatar}
-                  alt="Default Avatar"
-                  className="object-fit rounded-full "
-                />
+                <span className="text-3xl">
+                  {user.username.charAt(0).toUpperCase()}
+                </span>
               )}
             </div>
           </div>
