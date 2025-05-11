@@ -4,7 +4,6 @@ import taskRoute from "./routes/task.js";
 import morgan from "morgan";
 import cors from "cors";
 import createHttpError, { isHttpError } from "http-errors";
-import serverless from "serverless-http";
 const app = express();
 const corsOptions = {
   origin: ["http://localhost:4700", "https://task-duty-client.vercel.app"],
@@ -12,7 +11,9 @@ const corsOptions = {
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
 };
+
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(morgan("dev"));
 app.use(json({ limit: "25mb" }));
 app.use(express.urlencoded({ extended: true }));
